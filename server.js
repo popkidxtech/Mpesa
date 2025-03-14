@@ -17,7 +17,7 @@ app.post('/mpesa_transaction', async (req, res) => {
 
     // 2. Initiate STK push (Sim Toolkit push)
     const mpesaResponse = await axios.post(
-      'YOUR_MPESA_STK_PUSH_URL', // Replace with your actual M-Pesa API URL
+      'https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest', // Replace with your actual M-Pesa API URL
       {
         BusinessShortCode: 'YOUR_BUSINESS_SHORTCODE',
         Password: 'YOUR_PASSWORD',
