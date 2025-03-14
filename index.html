@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>M-Pesa Transaction</title>
+<style>
+  body {
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: yellow;
+  }
+
+  .transaction-box {
+    background-color: blue;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 300px;
+  }
+
+  .input-group {
+    margin-bottom: 15px;
+  }
+
+  .input-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .input-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  .button-container {
+      text-align: center;
+  }
+
+  .send-button {
+    background-color: #008000; /* Green */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  .confirmation-message {
+    margin-top: 20px;
+    text-align: center;
+    display: none; /* Initially hidden */
+    background-color: #d4edda;
+    color: #155724;
+    padding: 10px;
+    border: 1px solid #c3e6cb;
+    border-radius: 4px;
+  }
+
+</style>
+</head>
+<body>
+
+<div class="transaction-box">
+  <div class="input-group">
+    <label for="phone-number">Phone Number:</label>
+    <input type="tel" id="phone-number" placeholder="2547XXXXXXXX">
+  </div>
+  <div class="input-group">
+    <label for="amount">Amount (KES):</label>
+    <input type="number" id="amount" placeholder="Amount">
+  </div>
+  <div class="button-container">
+    <button class="send-button" onclick="sendMoney()">Send Money</button>
+  </div>
+  <div id="confirmation" class="confirmation-message">
+    Transaction Successful! Check your M-Pesa app.
+  </div>
+</div>
+
+<script>
+function sendMoney() {
+  const phoneNumber = document.getElementById('phone-number').value;
+  const amount = document.getElementById('amount').value;
+  const confirmationMessage = document.getElementById('confirmation');
+
+  // Basic validation (add more robust validation as needed)
+  if (!phoneNumber || !amount || isNaN(amount) || amount <= 0) {
+    alert("Please enter a valid phone number and amount.");
+    return;
+  }
+
+  // Simulate M-Pesa confirmation (replace with actual M-Pesa API integration)
+  // In a real application, you'd use an API to trigger the M-Pesa process.
+  // This example just shows a confirmation message.
+  confirmationMessage.style.display = 'block';
+
+  // In a real application, you would then initiate the M-Pesa STK push.
+  // After the user completes the transaction on their phone,
+  // a callback from Safaricom would update the status.
+  // For security reasons, you would *never* expose your API keys or secrets in client-side JavaScript.
+  // All backend processing should happen on your server.
+
+  // Simulate resetting the form after a delay (optional)
+  setTimeout(() => {
+    document.getElementById('phone-number').value = '';
+    document.getElementById('amount').value = '';
+    confirmationMessage.style.display = 'none';
+  }, 3000); // 3 seconds
+}
+</script>
+
+</body>
+</html>
